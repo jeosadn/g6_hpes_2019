@@ -50,3 +50,11 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#Other
+assignment1/busybox-1.30.0.tar.bz2
+assignment1/linux-5.1/
+assignment1/u-boot-2016.11.tar.bz2
+assignment1/u-boot-2016.11/
+assignment1/v5.1
+assignment1/v5.1.tar.gz
