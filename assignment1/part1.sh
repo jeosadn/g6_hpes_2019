@@ -43,3 +43,11 @@ if false; then
    qemu-system-arm -machine vexpress-a9 -nographic            -kernel zImage -dtb vexpress-v2p-ca9.dtb -cpu cortex-a9 -m 512M
 fi
 
+#Compiling busybox
+if false; then
+   cd bussybox-1.30.0/
+   make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- defconfig #default config
+   make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig #Settings -> Build -> enable static linking
+   make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- install
+fi
+
