@@ -29,7 +29,7 @@ fi
 if false; then
    tar xf v5.1.tar.gz
    cd linux-5.1
-   make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig #This step is interactive, configure whatever
+   make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- defconfig #This step is interactive, configure whatever
    make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- all #Compilation takes ~2hours, fails in stage2 but zImage is done
    cp arch/arm/boot/zImage ../.
 
