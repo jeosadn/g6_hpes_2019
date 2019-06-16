@@ -43,4 +43,6 @@ if false; then
 
    #Now you can build (This will take multiple hours and use >50GB of disc space
    bitbake console-image
+
+   #This took ~9 hours and produced a 17GB folder with images.
 fi
