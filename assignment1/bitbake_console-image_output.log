@@ -1,0 +1,35 @@
+(py2) /home/jo/meta-tec (master)> bitbake console-image
+WARNING: Host distribution "ubuntu-19.04" has not been validated with this version of the build system; you may possibly experience unexpected failures. It is recommended that you use a tested distribution.
+Parsing recipes: 100% |##################################################################################################################| Time: 0:04:27
+Parsing of 2340 .bb files complete (0 cached, 2340 parsed). 3354 targets, 318 skipped, 0 masked, 0 errors.
+NOTE: Resolving any missing task queue dependencies
+
+Build Configuration:
+BB_VERSION           = "1.40.0"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "ubuntu-19.04"
+TARGET_SYS           = "arm-poky-linux-gnueabi"
+MACHINE              = "raspberrypi2"
+DISTRO               = "poky"
+DISTRO_VERSION       = "2.6.2"
+TUNE_FEATURES        = "arm armv7ve vfp thumb neon vfpv4 callconvention-hard cortexa7"
+TARGET_FPU           = "hard"
+meta
+meta-poky            = "thud:b035b4dcee9122b5dd3799b48e4465e009bbed66"
+meta-oe
+meta-multimedia
+meta-networking
+meta-perl
+meta-python          = "thud:9b3b907f30b0d5b92d58c7e68289184fda733d3e"
+meta-qt5             = "thud:1520d5b2b2beec5e1c3209d3178219e93ef08bca"
+meta-raspberrypi     = "thud:c71d79efc5a06a0c896c278c94f5b14413bb4d69"
+meta-rpi             = "thud:ac3bd8cbdba7e4a9d5a6186293594ef0086eee4a"
+
+NOTE: Fetching uninative binary shim from http://downloads.yoctoproject.org/releases/uninative/2.4/x86_64-nativesdk-libc.tar.bz2;sha256sum=06f91685b782f2ccfedf3070b3ba0fe4a5ba2f0766dad5c9d1642dccf95accd0
+Initialising tasks: 100% |###########################################################################################################################################################################################################################################################################| Time: 0:00:03
+Sstate summary: Wanted 1110 Found 0 Missed 1110 Current 0 (0% match, 0% complete)
+NOTE: Executing SetScene Tasks
+NOTE: Executing RunQueue Tasks
+NOTE: Tasks Summary: Attempted 3648 tasks of which 5 didn't need to be rerun and all succeeded.
+
+Summary: There was 1 WARNING message shown.
