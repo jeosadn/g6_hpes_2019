@@ -55,6 +55,7 @@ dkms.conf
 assignment1/linux-5.1/
 assignment1/u-boot-2016.11/
 assignment1/busybox-1.30.0/
+assignment1/poky/
 *.tar
 *.gz
 *.bz2
