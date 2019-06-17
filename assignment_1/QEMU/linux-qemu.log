@@ -1,3 +1,8 @@
+djimenezl@djl:~/Documentos/TEC/SistemasEmpotradosAltoDesempeño/ProyectoI/g6_hpes_2019/assignment_1/QEMU/images$ qemu-system-arm -machine vexpress-a9 -cpu cortex-a9 -m 512M -dtb vexpress-v2p-ca9.dtb -kernel zImage -nographic
+pulseaudio: set_sink_input_volume() failed
+pulseaudio: Reason: Invalid argument
+pulseaudio: set_sink_input_mute() failed
+pulseaudio: Reason: Invalid argument
 Booting Linux on physical CPU 0x0
 Linux version 5.1.0 (djimenezl@djl) (gcc version 7.4.0 (Ubuntu/Linaro 7.4.0-1ubuntu1~18.04.1)) #1 SMP Fri Jun 14 16:11:23 CST 2019
 CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c5387d
@@ -41,8 +46,8 @@ clocksource: arm,sp804: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19
 Failed to initialize '/smb@4000000/motherboard/iofpga@7,00000000/timer@12000': -22
 smp_twd: clock not found -2
 Console: colour dummy device 80x30
-Calibrating local timer... 94.28MHz.
-Calibrating delay loop... 632.01 BogoMIPS (lpj=3160064)
+Calibrating local timer... 94.48MHz.
+Calibrating delay loop... 637.74 BogoMIPS (lpj=3188736)
 pid_max: default: 32768 minimum: 301
 Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
 Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
@@ -56,7 +61,7 @@ Setting up static identity map for 0x60100000 - 0x60100060
 rcu: Hierarchical SRCU implementation.
 smp: Bringing up secondary CPUs ...
 smp: Brought up 1 node, 1 CPU
-SMP: Total of 1 processors activated (632.01 BogoMIPS).
+SMP: Total of 1 processors activated (637.74 BogoMIPS).
 CPU: All CPU(s) started in SVC mode.
 devtmpfs: initialized
 VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 0
@@ -102,5 +107,80 @@ jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
 9p: Installing v9fs 9p2000 file system support
 io scheduler mq-deadline registered
 io scheduler kyber registered
-QEMU: Terminated
-
+drm-clcd-pl111 1001f000.clcd: assigned reserved memory node vram@4c000000
+drm-clcd-pl111 1001f000.clcd: using device-specific reserved memory
+drm-clcd-pl111 1001f000.clcd: initializing Versatile Express PL111
+drm-clcd-pl111 1001f000.clcd: core tile graphics present
+drm-clcd-pl111 1001f000.clcd: this device will be deactivated
+Error: Driver 'vexpress-muxfpga' is already registered, aborting...
+drm-clcd-pl111 10020000.clcd: initializing Versatile Express PL111
+drm-clcd-pl111 10020000.clcd: DVI muxed to daughterboard 1 (core tile) CLCD
+physmap-flash 40000000.flash: physmap platform flash device: [mem 0x40000000-0x43ffffff]
+40000000.flash: Found 2 x16 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+Intel/Sharp Extended Query Table at 0x0031
+Using buffer write method
+physmap-flash 40000000.flash: physmap platform flash device: [mem 0x44000000-0x47ffffff]
+40000000.flash: Found 2 x16 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+Intel/Sharp Extended Query Table at 0x0031
+Using buffer write method
+Concatenating MTD devices:
+(0): "40000000.flash"
+(1): "40000000.flash"
+into device "40000000.flash"
+physmap-flash 48000000.psram: physmap platform flash device: [mem 0x48000000-0x49ffffff]
+libphy: Fixed MDIO Bus: probed
+libphy: smsc911x-mdio: probed
+smsc911x 4e000000.ethernet eth0: MAC Address: 52:54:00:12:34:56
+isp1760 4f000000.usb: bus width: 32, oc: digital
+isp1760 4f000000.usb: NXP ISP1760 USB Host Controller
+isp1760 4f000000.usb: new USB bus registered, assigned bus number 1
+isp1760 4f000000.usb: Scratch test failed.
+isp1760 4f000000.usb: can't setup: -19
+isp1760 4f000000.usb: USB bus 1 deregistered
+usbcore: registered new interface driver usb-storage
+rtc-pl031 10017000.rtc: registered as rtc0
+mmci-pl18x 10005000.mmci: Got CD GPIO
+mmci-pl18x 10005000.mmci: Got WP GPIO
+mmci-pl18x 10005000.mmci: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 25,26 (pio)
+ledtrig-cpu: registered to indicate activity on CPUs
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+input: AT Raw Set 2 keyboard as /devices/platform/smb@4000000/smb@4000000:motherboard/smb@4000000:motherboard:iofpga@7,00000000/10006000.kmi/serio0/input/input0
+aaci-pl041 10004000.aaci: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 24
+aaci-pl041 10004000.aaci: FIFO 512 entries
+oprofile: using arm/armv7-ca9
+NET: Registered protocol family 17
+9pnet: Installing 9P2000 support
+Registering SWP/SWPB emulation handler
+Error: Driver 'vexpress-muxfpga' is already registered, aborting...
+drm-clcd-pl111 10020000.clcd: initializing Versatile Express PL111
+drm-clcd-pl111 10020000.clcd: DVI muxed to daughterboard 1 (core tile) CLCD
+Error: Driver 'vexpress-muxfpga' is already registered, aborting...
+drm-clcd-pl111 10020000.clcd: initializing Versatile Express PL111
+drm-clcd-pl111 10020000.clcd: DVI muxed to daughterboard 1 (core tile) CLCD
+rtc-pl031 10017000.rtc: setting system clock to 2019-06-17T04:30:03 UTC (1560745803)
+ALSA device list:
+  #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 24
+input: ImExPS/2 Generic Explorer Mouse as /devices/platform/smb@4000000/smb@4000000:motherboard/smb@4000000:motherboard:iofpga@7,00000000/10007000.kmi/serio1/input/input2
+VFS: Cannot open root device "(null)" or unknown-block(0,0): error -6
+Please append a correct "root=" boot option; here are the available partitions:
+1f00          131072 mtdblock0 
+ (driver?)
+1f01           32768 mtdblock1 
+ (driver?)
+Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.1.0 #1
+Hardware name: ARM-Versatile Express
+[<801107fc>] (unwind_backtrace) from [<8010c6e8>] (show_stack+0x10/0x14)
+[<8010c6e8>] (show_stack) from [<8071764c>] (dump_stack+0x88/0x9c)
+[<8071764c>] (dump_stack) from [<80120808>] (panic+0x110/0x2cc)
+[<80120808>] (panic) from [<80a015f8>] (mount_block_root+0x1e8/0x2d4)
+[<80a015f8>] (mount_block_root) from [<80a01828>] (mount_root+0x144/0x160)
+[<80a01828>] (mount_root) from [<80a01994>] (prepare_namespace+0x150/0x198)
+[<80a01994>] (prepare_namespace) from [<8072e64c>] (kernel_init+0x8/0x114)
+[<8072e64c>] (kernel_init) from [<801010e8>] (ret_from_fork+0x14/0x2c)
+Exception stack(0x9e4a1fb0 to 0x9e4a1ff8)
+1fa0:                                     00000000 00000000 00000000 00000000
+1fc0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+1fe0: 00000000 00000000 00000000 00000000 00000013 00000000
+---[ end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0) ]---
