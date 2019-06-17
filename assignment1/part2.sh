@@ -45,4 +45,26 @@ if false; then
    bitbake console-image
 
    #This took ~9 hours and produced a 17GB folder with images.
+   #Image is in tmp/work/raspberrypi2-poky-linux-gnueabi/console-image/1.0-r0/temp/
+
+   #Now to copy the generated images to the sd card
+
+   #cd to the meta-rpi helper scripts
+   cd /home/jo/rendimiento/g6_hpes_2019/assignment1/poky/meta-rpi/scripts
+
+   #Plug SD card, figure out device with command lsblk
+
+   #Partition SD card
+   sudo ./mk2parts.sh sdb
+
+   #mount it
+   sudo mkdir /media/card
+
+   #Copy boot and root partitons
+   export OETMP=/home/jo/meta-tec/tmp
+   export MACHINE=raspberrypi2
+   ./copy_boot.sh sdb
+   ./copy_rootfs.sh sdb console
+
+   #The rapsberry pi booted successfully!
 fi
