@@ -1,0 +1,17 @@
+
+
+U-Boot 2016.11 (Jun 14 2019 - 14:59:38 -0600)
+
+DRAM:  512 MiB
+WARNING: Caches not enabled
+Flash: 128 MiB
+MMC:   MMC: 0
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   smc911x-0
+Hit any key to stop autoboot:  2  0 
+=> QEMU: Terminated
+
