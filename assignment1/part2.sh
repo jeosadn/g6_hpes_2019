@@ -18,16 +18,16 @@ fi
 # Build yocto
 if false; then
    #Clone the repo (thud version)
-   git clone -b thud git://git.yoctoproject.org/poky.git
+   git clone -b thud https://git.yoctoproject.org/poky.git
    cd poky
 
    #Grab dependency meta layers
-   git clone -b thud git://git.openembedded.org/meta-openembedded
+   git clone -b thud https://git.openembedded.org/meta-openembedded
    git clone -b thud https://github.com/meta-qt5/meta-qt5
-   git clone -b thud git://git.yoctoproject.org/meta-raspberrypi
+   git clone -b thud https://git.yoctoproject.org/git/meta-raspberrypi
 
    #Clone tutorial meta layer
-   git clone -b thud git://github.com/jumpnow/meta-rpi
+   git clone -b thud https://github.com/jumpnow/meta-rpi
 
    #Create meta-tec meta layer
    source oe-init-build-env ~/meta-tec
