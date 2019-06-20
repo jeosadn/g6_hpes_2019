@@ -65,6 +65,22 @@ if false; then
    export MACHINE=raspberrypi2
    ./copy_boot.sh sdb
    ./copy_rootfs.sh sdb console
+fi
 
-   #The rapsberry pi booted successfully!
+# Boot raspberrypi
+
+if false; then
+   #Plug in power, keyboard, monitor, wifi, camera
+   #Login with user root, pwd tec. Will ask to change password, used 12345
+
+   #Configure camera
+   mkdir /mnt/fat
+   mount /dev/mmcblk0p1 /mnt/fat
+   vi /mnt/fat/config.txt
+      #start_x=1
+      #gpu_mem=128
+      #disable_camera_led=1   # optional for disabling the red LED on the camera
+   reboot
+
+   raspiyuv -w 640 -h 480 -bgr -o test_image
 fi
