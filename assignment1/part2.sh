@@ -41,6 +41,24 @@ if false; then
    cp meta-rpi/conf/bblayers.conf.sample ~/meta-tec/conf/bblayers.conf
       #Update paths to your actual meta layers
 
+   #Add recipes
+   devtool add rg2yuv-c https://github.com/jeosadn/rgb2yuv-c.git
+   devtool add rg2yuv-intrinsics https://github.com/jeosadn/rgb2yuv-intrinsics.git
+
+   #Edit ~/meta-tec/workspace/recipes/rg2yuvc-*/rgb2yuv-*_git.bb
+      #Change PV for 1.0
+      #Change SRCREV for master
+
+   #Edit ~/meta-tec/workspace/conf/layer.conf (note space in front of package name)
+      #Add IMAGE_INSTALL_append = " rgb2yuv-c"
+      #Add IMAGE_INSTALL_append = " rgb2yuv-intrinsics"
+
+   #Before building, check the source paths in ~/meta-tec/workspace/appends/*.bbappend - These may have to be updated
+
+   #When developing recipes, source code will be stored in ~/meta-tec/workspace/sources/* .
+   #bitbake may not check for new commit from github, so be sure to update files here.
+   #Finally, a sample image for dev is available at ~/meta-tec/samples/zelda_rgb24_w640_h480_rgba.rgb
+
    #Now you can build (This will take multiple hours and use >50GB of disc space
    bitbake console-image
 
@@ -67,8 +85,7 @@ if false; then
    ./copy_rootfs.sh sdb console
 fi
 
-# Boot raspberrypi
-
+#Boot raspberrypi, obtain test data
 if false; then
    #Plug in power, keyboard, monitor, wifi, camera
    #Login with user root, pwd tec. Will ask to change password, used 12345
@@ -83,4 +100,7 @@ if false; then
    reboot
 
    raspiyuv -w 640 -h 480 -bgr -o test_image
+   #This command fails due to camera hardware. An image was downloaded from the internet
+   #and converted to rgb using https://www.freefileconvert.com/png-rgb
 fi
+
