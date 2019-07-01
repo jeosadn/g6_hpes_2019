@@ -14,11 +14,15 @@ The rgb2yuv-\* recipes deploy to the following locations:
 
 `git@github.com:jeosadn/meta-tec.git`
 
+https://github.com/jeosadn/meta-tec
+
 ## rgb2yuv-c package
 This package builds and deploys rgb2yuv-c using autotools, to
 `/usr/local/bin/rgb2yuv-c` and `/usr/local/share/doc/rgb2yuv-c/`
 
 `git@github.com:jeosadn/rgb2yuv-c.git`
+
+https://github.com/jeosadn/rgb2yuv-c
 
 ## rgb2yuv-intrinsics package
 This package builds and deploys rgb2yuv-intrinsics using autotools, to
@@ -26,7 +30,9 @@ This package builds and deploys rgb2yuv-intrinsics using autotools, to
 
 As this requires NEON, it is not possible to build it for a local machine.
 
-`git@github.com:jeosadn/rgb2yuv-c.git`
+`git@github.com:jeosadn/rgb2yuv-intrinsics.git`
+
+https://github.com/jeosadn/rgb2yuv-intrinsics
 
 
 ## meta-local workspace
@@ -35,3 +41,5 @@ This contains the workspace that imports the layers and builds the images
 care to update the hardcoded paths)
 
 `git@github.com:jeosadn/meta-local.git`
+
+https://github.com/jeosadn/meta-local
