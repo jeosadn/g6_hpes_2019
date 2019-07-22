@@ -1,0 +1,16 @@
+The steps below can all be executed by running setup.sh
+If run without sudo, the last step will fail and not install anything.
+
+To clean up the repository, use clean.sh
+
+To generate the ./configure script, execute the following commands:
+
+$ aclocal
+$ automake --add-missing
+$ autoconf
+
+To build the program, execute the following commands:
+
+$ ./configure
+$ make
+$ make install

@@ -1,0 +1,15 @@
+autom4te.cache/
+configure
+Makefile
+Makefile.in
+aclocal.m4
+config.log
+config.status
+lib/.deps/
+lib/Makefile
+lib/Makefile.in
+src/.deps/
+src/Makefile
+src/Makefile.in
+lib/libmemcheck
+src/memcheck
