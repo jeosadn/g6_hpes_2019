@@ -1,0 +1,15 @@
+Análisis de case3.c
+
+Al ejecutar Valgrind sobre el ejecutable de case3.c, se presenta información 
+relacionada con el uso de memoria del programa.
+
+En la primera parte (HEAP SUMMARY), se indica el estado de la memoria al 
+finalizar el programa, se puede notar que hay 9 bloques (3600bytes) que 
+todavía aparecen como en uso.
+
+En la segunda parte (LEAK MEMORY), se indica que esos 9 bloques en uso 
+corresponden a una fuga de memoria.
+
+Todo esto sucede porque en el código de case3, se asigna memoria 10 veces, 
+una por cada iteración del ciclo for, y al final del test solo se libera 
+la ultima asignación.

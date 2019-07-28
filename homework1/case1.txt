@@ -1,0 +1,10 @@
+Análisis de case1.c
+
+Al ejecutar Valgrind sobre el ejecutable de case1.c, se indica el siguiente error de escritura:
+
+    Invalid write of size 4 at 0x1086D5: main (case1.c:9) 
+    Address 0x522d068 is 0 bytes after a block of size 40 alloc'd
+
+El error se produce porque el tamaño de memoria que se asignó en la línea 6 para el puntero "a" 
+es de 10 enteros, pero al recorrer el for, en la última iteración se trata de escribir la 
+posición 11 del puntero "a" y ese espacio no fue asignado.
