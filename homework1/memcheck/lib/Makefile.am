@@ -2,7 +2,7 @@
 AM_CFLAGS =
 AM_LDFLAGS =
 
-# this lists the binaries to produce, the (non-PHONY, binary) targets in
-# the previous manual Makefile
-bin_PROGRAMS = libmemcheck
-libmemcheck_SOURCES = libmemcheck.c
+lib_LTLIBRARIES = libmemcheck.la
+libmemcheck_la_SOURCES = libmemcheck.c
+libmemcheck_la_CFLAGS = -O1
+libmemcheck_la_LIBADD = -ldl

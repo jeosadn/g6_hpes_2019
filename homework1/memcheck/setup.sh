@@ -1,5 +1,6 @@
 #!/bin/sh
 
+autoreconf -i
 aclocal
 automake --add-missing
 autoconf

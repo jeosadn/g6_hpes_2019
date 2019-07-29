@@ -5,11 +5,12 @@ To clean up the repository, use clean.sh
 
 To generate the ./configure script, execute the following commands:
 
+$ autoreconf -i
 $ aclocal
 $ automake --add-missing
 $ autoconf
 
-To build the program, execute the following commands:
+To build and install the program, execute the following commands:
 
 $ ./configure
 $ make

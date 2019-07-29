@@ -66,7 +66,6 @@ int main (int argc, char **argv)
 {
    char *PATH;
    int exit;
-   int *ptr,*ptr2;
 
    if (menu(argc, argv, &PATH, &exit)) {
       return 1;
@@ -80,7 +79,7 @@ int main (int argc, char **argv)
 
    pid_t pid=fork();
    if (pid==0) {
-     putenv("LD_PRELOAD=ibmemcheck.so");
+     putenv("LD_PRELOAD=/usr/local/lib/libmemcheck.so");
      execl(PATH,PATH,NULL);
    }
 
