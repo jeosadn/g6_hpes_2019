@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h> /* for pid_t */
+#include <sys/wait.h> /* for wait */
 
 int menu(int argc, char **argv, char **PATH, int *exit){
    int authors = 0;
@@ -64,6 +66,7 @@ int main (int argc, char **argv)
 {
    char *PATH;
    int exit;
+   int *ptr,*ptr2;
 
    if (menu(argc, argv, &PATH, &exit)) {
       return 1;
@@ -75,6 +78,11 @@ int main (int argc, char **argv)
 
    printf("Analyzing program: %s.\n", PATH);
 
+   pid_t pid=fork();
+   if (pid==0) {
+     putenv("LD_PRELOAD=ibmemcheck.so");
+     execl(PATH,PATH,NULL);
+   }
+
    return 0;
 }
-
