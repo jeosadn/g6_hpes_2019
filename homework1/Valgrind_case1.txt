@@ -1,0 +1,20 @@
+==4810== Memcheck, a memory error detector
+==4810== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4810== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==4810== Command: ./case1
+==4810== 
+==4810== Invalid write of size 4
+==4810==    at 0x1086D5: main (case1.c:9)
+==4810==  Address 0x522d068 is 0 bytes after a block of size 40 alloc'd
+==4810==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4810==    by 0x1086A2: main (case1.c:6)
+==4810== 
+==4810== 
+==4810== HEAP SUMMARY:
+==4810==     in use at exit: 0 bytes in 0 blocks
+==4810==   total heap usage: 1 allocs, 1 frees, 40 bytes allocated
+==4810== 
+==4810== All heap blocks were freed -- no leaks are possible
+==4810== 
+==4810== For counts of detected and suppressed errors, rerun with: -v
+==4810== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

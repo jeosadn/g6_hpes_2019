@@ -1,0 +1,8 @@
+Análisis de case2.c
+
+Al ejecutar Valgrind sobre el ejecutable de case2.c, se indican varios errores que 
+apuntan a la misma línea del código, la línea 11.
+
+En este caso lo que sucede es que en la iteración número 10 de la línea 11, se 
+trata de imprimir el valor del elemento a[9], pero ese elemento del arreglo no 
+fue inicializado por el ciclo for de la línea 7.
