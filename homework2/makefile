@@ -5,12 +5,21 @@
 
 include make.def
 
-EXES= pi$(EXE)
+EXES= pi$(EXE) pi_omp_private$(EXE) pi_omp_teams$(EXE) pi_omp_threads$(EXE)
 
 all: $(EXES)
 
 pi$(EXE): pi.$(OBJ)
 	$(CLINKER) $(OPTFLAGS) -o pi$(EXE) pi.$(OBJ) $(LIBS)
+
+pi_omp_private$(EXE): pi_omp_private.$(OBJ)
+	$(CLINKER) $(OPTFLAGS) -o pi_omp_private$(EXE) pi_omp_private.$(OBJ) $(LIBS)
+
+pi_omp_teams$(EXE): pi_omp_teams.$(OBJ)
+	$(CLINKER) $(OPTFLAGS) -o pi_omp_teams$(EXE) pi_omp_teams.$(OBJ) $(LIBS)
+
+pi_omp_threads$(EXE): pi_omp_threads.$(OBJ)
+	$(CLINKER) $(OPTFLAGS) -o pi_omp_threads$(EXE) pi_omp_threads.$(OBJ) $(LIBS)
 
 clean:
 	$(RM) $(EXES) *.$(OBJ)

@@ -60,3 +60,6 @@ assignment1/poky/
 *.gz
 *.bz2
 homework2/pi
+homework2/pi_omp_private
+homework2/pi_omp_teams
+homework2/pi_omp_threads
