@@ -13,3 +13,7 @@ $ ./pi_omp_teams
 
 $ ./pi_omp_threads
 <not implemented yet>
+
+Useful links:
+https://software.intel.com/en-us/articles/32-openmp-traps-for-c-developers/
+https://www.ibm.com/support/knowledgecenter/en/SSXVZZ_16.1.0/com.ibm.xlcpp161.lelinux.doc/compiler_ref/prag_omp_teams.html

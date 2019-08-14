@@ -23,13 +23,16 @@ int main() {
    start_time = omp_get_wtime();
 
 
-   for (i = 1; i <= num_steps; i++) {
-      x = (i - 0.5) * step;
-      sum = sum + 4.0 / (1.0 + x * x);
+   #pragma omp target teams num_teams(4) map(sum, x) reduction(+:sum)
+   {
+      #pragma omp distribute parallel for
+      for (i = 1; i <= num_steps; i++) {
+         x = (i - 0.5) * step;
+         sum = sum + 4.0 / (1.0 + x * x);
+      }
    }
 
    pi = step * sum;
    run_time = omp_get_wtime() - start_time;
-   printf("pi with %ld steps is %lf in %lf seconds\n", num_steps, pi,
-         run_time);
+   printf("pi with %ld steps is %lf in %lf seconds\n", num_steps, pi, run_time);
 }
