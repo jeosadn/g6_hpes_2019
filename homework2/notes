@@ -1,7 +1,15 @@
-To make the program:
+To make the programs:
 $ make
 
-To run the program:
-$ pi
+Program results
+$ ./pi
 pi with 100000000 steps is 3.141593 in 0.405651 seconds
 
+$ ./pi_omp_private
+pi with 100000000 steps is 3.141593 in 0.168258 seconds
+
+$ ./pi_omp_teams
+<not implemented yet>
+
+$ ./pi_omp_threads
+<not implemented yet>
