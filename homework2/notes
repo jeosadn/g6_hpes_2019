@@ -1,0 +1,7 @@
+To make the program:
+$ make
+
+To run the program:
+$ pi
+pi with 100000000 steps is 3.141593 in 0.405651 seconds
+
