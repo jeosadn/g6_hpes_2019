@@ -26,7 +26,6 @@ int main() {
    // va a ejecutar en paralelo.
    #pragma omp parallel
    {
-	   
       // El pragma for reduction establece como se va a distribuir
       // el ciclo for en los diferentes hilos. El pragma private indica
       // que la variable x no sera compartida entre los diferentes hilos.

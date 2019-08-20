@@ -1,5 +1,16 @@
+Repo url: https://github.com/jeosadn/g6_hpes_2019
+Tarea 2: https://github.com/jeosadn/g6_hpes_2019/tree/master/homework2
+
 To make the programs:
 $ make
+g++ -fopenmp -O3 -c pi.c
+g++ -fopenmp -O3 -o pi pi.o -lm
+g++ -fopenmp -O3 -c pi_omp_private.c
+g++ -fopenmp -O3 -o pi_omp_private pi_omp_private.o -lm
+g++ -fopenmp -O3 -c pi_omp_teams.c
+g++ -fopenmp -O3 -o pi_omp_teams pi_omp_teams.o -lm
+g++ -fopenmp -O3 -c pi_omp_threads.c
+g++ -fopenmp -O3 -o pi_omp_threads pi_omp_threads.o -lm
 
 Program results
 $ ./pi
@@ -9,10 +20,18 @@ $ ./pi_omp_private
 pi with 100000000 steps is 3.141593 in 0.168258 seconds
 
 $ ./pi_omp_teams
-<not implemented yet>
+pi with 100000000 steps is 3.141593 in 0.221364 seconds
 
 $ ./pi_omp_threads
-<not implemented yet>
+ num_threads = 1
+pi with 100000000 steps is 3.141593 in 0.395268 seconds
+ num_threads = 2
+pi with 100000000 steps is 3.141593 in 0.196561 seconds
+ num_threads = 3
+pi with 100000000 steps is 3.141593 in 0.146255 seconds
+ num_threads = 4
+pi with 100000000 steps is 3.141593 in 0.160828 seconds
+
 
 Useful links:
 https://software.intel.com/en-us/articles/32-openmp-traps-for-c-developers/

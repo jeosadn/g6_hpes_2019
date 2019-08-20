@@ -25,20 +25,20 @@ int main() {
       start_time = omp_get_wtime();
 
       // Con la funcion omp_set_num_threads se establece la cantidad de
-      // hilos que se van a generar.		
+      // hilos que se van a generar.
       omp_set_num_threads(j+1);
-      
+
       // El pragma parallel indica que la siguiente porcion de codigo se
       // va a ejecutar en paralelo.
       #pragma omp parallel
       {
-	 // El pragma single indica que la siguiente instruccion se va
-	 // a ejecutar en un solo hilo.     
+         // El pragma single indica que la siguiente instruccion se va
+         // a ejecutar en un solo hilo.
          #pragma omp single
          printf(" num_threads = %d\n", omp_get_num_threads());
-    
-	 // El pragma for reduction establece como se va a distribuir
-	 // el ciclo for en los diferentes hilos.
+
+         // El pragma for reduction establece como se va a distribuir
+         // el ciclo for en los diferentes hilos.
          #pragma omp for reduction(+ : sum)
          for (i = 1; i <= num_steps; i++) {
             x = (i - 0.5) * step;
