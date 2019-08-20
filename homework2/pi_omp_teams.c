@@ -22,14 +22,17 @@ int main() {
 
    start_time = omp_get_wtime();
 
+   // Con el pragma teams se crea un conjunto de equipos, donde cada equipo
+   // tiene un hilo maestro. num_teams define la cantidad de equipos a crear.
+   #pragma omp target teams num_teams(3) map(sum,x)
 
-   #pragma omp target teams num_teams(4) map(sum, x) reduction(+:sum)
-   {
-      #pragma omp distribute parallel for
-      for (i = 1; i <= num_steps; i++) {
-         x = (i - 0.5) * step;
-         sum = sum + 4.0 / (1.0 + x * x);
-      }
+   // Con el pragma distribute se distrubuyen las iteraciones del ciclo for
+   // dentro de cada equipo. El pragma parallel for permite paralelizar la
+   // ejecucion dentro de cada equipo. 
+   #pragma omp distribute parallel for reduction(+:sum) 
+   for (i = 1; i <= num_steps; i++) {
+      x = (i - 0.5) * step;
+      sum = sum + 4.0 / (1.0 + x * x);
    }
 
    pi = step * sum;

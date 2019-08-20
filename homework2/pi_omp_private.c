@@ -22,9 +22,14 @@ int main() {
 
    start_time = omp_get_wtime();
 
-
+   // El pragma parallel indica que la siguiente porcion de codigo se
+   // va a ejecutar en paralelo.
    #pragma omp parallel
    {
+	   
+      // El pragma for reduction establece como se va a distribuir
+      // el ciclo for en los diferentes hilos. El pragma private indica
+      // que la variable x no sera compartida entre los diferentes hilos.
       #pragma omp for reduction(+:sum) private(x)
       for (i = 1; i <= num_steps; i++) {
          x = (i - 0.5) * step;
