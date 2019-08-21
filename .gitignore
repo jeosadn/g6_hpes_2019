@@ -64,3 +64,4 @@ homework2/pi_omp_private
 homework2/pi_omp_teams
 homework2/pi_omp_threads
 *.h5
+*.hist
