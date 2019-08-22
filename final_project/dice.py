@@ -60,11 +60,8 @@ def create_model(filename, params):
         return model, model_hist
 
     except (OSError, FileNotFoundError):
-        from keras.backend import image_data_format
-        from keras.datasets import mnist
         from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
         from keras.models import Sequential
-        from keras.utils import to_categorical
         from keras.losses import categorical_crossentropy
         from keras.optimizers import Adadelta
         from pickle import dump
@@ -74,35 +71,21 @@ def create_model(filename, params):
         print('Generating model')
 
         print('Data preprocessing')
-        (X_train, y_train), (X_test, y_test) = mnist.load_data()
-        if image_data_format() == 'channels_first':
-            X_train = X_train.reshape(X_train.shape[0], 1, params.img_rows,
-                                      params.img_cols)
-            X_test = X_test.reshape(X_test.shape[0], 1, params.img_rows,
-                                    params.img_cols)
-            input_shape = (1, params.img_rows, params.img_cols)
-        else:
-            X_train = X_train.reshape(X_train.shape[0], params.img_rows,
-                                      params.img_cols, 1)
-            X_test = X_test.reshape(X_test.shape[0], params.img_rows,
-                                    params.img_cols, 1)
-            input_shape = (params.img_rows, params.img_cols, 1)
-
-        X_train = X_train.astype('float32')
-        X_test = X_test.astype('float32')
-        X_train /= 255
-        X_test /= 255
-
-        print('X_train[0] shape', X_train[0].shape)
-        print('X_train shape:', X_train.shape)
-        print(X_train.shape[0], 'train_samples')
-        print(X_test.shape[0], 'test samples')
-
-        print(np.unique(y_train, return_counts=True))
-        num_category = len(np.unique(y_train))
-
-        y_train = to_categorical(y_train, num_category)
-        y_test = to_categorical(y_test, num_category)
+        input_shape = (params.img_rows, params.img_cols, 1)
+        train_generator = params.datagen.flow_from_directory(
+            directory=params.directory + './train/',
+            target_size=(params.img_rows, params.img_cols),
+            classes=params.classes,
+            color_mode='grayscale',
+            batch_size=params.batch_size,
+        )
+        valid_generator = params.datagen.flow_from_directory(
+            directory=params.directory + './valid/',
+            target_size=(params.img_rows, params.img_cols),
+            classes=params.classes,
+            color_mode='grayscale',
+            batch_size=params.batch_size,
+        )
 
         print('Model design')
         model = Sequential()
@@ -134,8 +117,8 @@ def create_model(filename, params):
             0.5,
         ))
         model.add(Dense(
-            num_category,
-            activation='softmax'
+            len(params.classes),
+            activation='softmax',
         ))
         model.compile(
             loss=categorical_crossentropy,
@@ -145,13 +128,13 @@ def create_model(filename, params):
 
         print('Model training')
         start = time.time()
-        model_hist = model.fit(
-            X_train,
-            y_train,
-            batch_size=params.batch_size,
+        model_hist = model.fit_generator(
+            train_generator,
+            steps_per_epoch=len(train_generator),
             epochs=params.num_epoch,
             verbose=1,
-            validation_data=(X_test, y_test)
+            validation_data=valid_generator,
+            validation_steps=len(valid_generator),
         )
         end = time.time()
         print("Training time: {:.0f}s".format(end-start))
@@ -169,14 +152,13 @@ def create_model(filename, params):
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
-    from keras.datasets import mnist
-    from keras.utils import to_categorical
+    from keras.preprocessing.image import ImageDataGenerator
     from os import remove
 
     parser = ArgumentParser(description='Execute [and train] a CNN model')
     parser.add_argument('-t', action='store_true',
                         help='Delete saved model, retrain')
-    parser.add_argument('-m', action='store', nargs='?', default='model',
+    parser.add_argument('-m', action='store', nargs='?', default='dice',
                         help='Filename for storing the model and history')
     args = parser.parse_args()
 
@@ -194,6 +176,9 @@ if __name__ == '__main__':
         img_cols=28,
         batch_size=10,
         num_epoch=1,
+        classes=['d4', 'd6', 'd8', 'd10', 'd12', 'd20'],
+        directory='./dice/',
+        datagen=ImageDataGenerator(rescale=1./255),
     )
 
     print('Create model')
@@ -202,14 +187,21 @@ if __name__ == '__main__':
     print('Model summary:')
     print(model.summary())
     print()
+
     print('Model generation history:')
     for x in model_hist.history.keys():
         print('{}: {}'.format(x, model_hist.history[x]))
     print()
 
     print('Model results on the ./test dataset:')
-    X_test = mnist.load_data()[1][0].reshape(10000, 28, 28, 1)
-    y_test = to_categorical(mnist.load_data()[1][1])
-    model_results = model.evaluate(X_test, y_test)
+    test_generator = params.datagen.flow_from_directory(
+        directory='./test/',
+        target_size=(params.img_rows, params.img_cols),
+        classes=params.classes,
+        color_mode='grayscale',
+        batch_size=params.batch_size,
+    )
+    model_results = model.evaluate_generator(test_generator,
+                                             steps=len(test_generator))
     for idx, label in enumerate(model.metrics_names):
         print('{}: {}'.format(label, model_results[idx]))

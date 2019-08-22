@@ -5,3 +5,19 @@ https://www.pyimagesearch.com/2019/05/06/getting-started-with-the-nvidia-jetson-
 
 Keras tutorial:
 https://towardsdatascience.com/building-a-convolutional-neural-network-cnn-in-keras-329fbbadc5f5
+https://github.com/fmezacr/patrones/blob/master/CNN/CNN_MNIST_KERAS.ipynb
+
+Old tentative datasets:
+https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia  -No usa camara
+https://www.kaggle.com/grassknoted/asl-alphabet  -Mejor ~ 1GB
+https://www.kaggle.com/mrgeislinger/asl-rgb-depth-fingerspelling-spelling-it-out -2 GB, no usamos depth
+
+Chosen dataset:
+https://www.kaggle.com/ucffool/dice-d4-d6-d8-d10-d12-d20-images
+
+From the dataset, we have the training and validation sets:
+./dice/train
+./dice/valid
+
+We will add our own images to the test dataset:
+./test
