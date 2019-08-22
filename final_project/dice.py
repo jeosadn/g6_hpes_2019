@@ -129,7 +129,19 @@ def create_model(filename, params):
         print('Model design')
         model = Sequential()
         print('Adding convolution and pooling layers')
-        for x in range(3):
+        for x in range(2):
+            model.add(Conv2D(
+                8,
+                kernel_size=(3, 3),
+                activation='relu',
+                input_shape=input_shape,
+            ))
+            model.add(Conv2D(
+                16,
+                kernel_size=(3, 3),
+                activation='relu',
+                input_shape=input_shape,
+            ))
             model.add(Conv2D(
                 32,
                 kernel_size=(3, 3),
@@ -152,7 +164,7 @@ def create_model(filename, params):
         print('Adding fully connected layer')
         model.add(Flatten())
         model.add(Dense(
-            220,
+            128,
             activation='relu',
         ))
         model.add(Dropout(
@@ -226,7 +238,7 @@ if __name__ == '__main__':
         img_rows=80,  # Training data size is 480
         img_cols=80,  # Training data size is 480
         rescale=1./255,
-        batch_size=160,
+        batch_size=10,
         num_epoch=10,
         classes=['d4', 'd6', 'd8', 'd10', 'd12', 'd20'],
         directory='./dice/',
