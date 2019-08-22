@@ -3,6 +3,41 @@
 # Requirements:
 #  conda install tensorflow keras pillow
 
+# History of results:
+######################################
+# params = ModelParams(
+#     img_rows=100,
+#     img_cols=100,
+#     batch_size=64,
+#     num_epoch=4,
+#     classes=['d4', 'd6', 'd8', 'd10', 'd12', 'd20'],
+#     directory='./dice/',
+#     datagen=ImageDataGenerator(rescale=1./255),
+# )
+#
+# Model generation history:
+#     val_loss: [1.1828707446380529, 0.7784641871670107, 0.4494701018796208, 0.36016085451835683]
+#     val_acc: [0.5761179835540017, 0.7316841107113491, 0.8905804000731086, 0.9191246437640784]
+#     loss: [1.5289429153123513, 0.9273872773242043, 0.5650875702838343, 0.3709819259696299]
+#     acc: [0.39967796135536265, 0.6500980117614114, 0.7916549985831407, 0.8662839540577977]
+######################################
+# params = ModelParams(
+#     img_rows=28,
+#     img_cols=28,
+#     batch_size=10,
+#     num_epoch=1,
+#     classes=['d4', 'd6', 'd8', 'd10', 'd12', 'd20'],
+#     directory='./dice/',
+#     datagen=ImageDataGenerator(rescale=1./255),
+# )
+# Model generation history:
+#     val_loss: [1.4294951213869336]
+#     val_acc: [0.37012369177888166]
+#     loss: [1.6246855345068776]
+#     acc: [0.3238588630969502]
+######################################
+
+
 
 # Hide TF warnings
 import logging
@@ -172,10 +207,10 @@ if __name__ == '__main__':
 
     print('Define model params')
     params = ModelParams(
-        img_rows=28,
-        img_cols=28,
-        batch_size=10,
-        num_epoch=1,
+        img_rows=100,
+        img_cols=100,
+        batch_size=64,
+        num_epoch=4,
         classes=['d4', 'd6', 'd8', 'd10', 'd12', 'd20'],
         directory='./dice/',
         datagen=ImageDataGenerator(rescale=1./255),
