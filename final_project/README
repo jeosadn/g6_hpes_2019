@@ -22,13 +22,4 @@ From the dataset, we have the training and validation sets:
 We will add our own images to the test dataset:
 ./test
 
-Number of layers:
-   The number of layers should be 1 or 2. More than thats produces a result that is too difficult to train. More info:
-   https://stats.stackexchange.com/a/180052
-
-Open questions:
-   Should we do data augmentation?
-   Number of layers?
-   Layer should have 1 or 2 convolution steps?
-   Batch size? smaller is faster, more random training, larger takes a long time to converge
 
